@@ -53,6 +53,8 @@ start.addEventListener('click', () => {
     ans_area.innerHTML = "";
     if(results.length === 0){
       results.push("[見つかりませんでした]");
+    }else{
+      results.unshift(`[${results.length}件見つかりました]`);
     }
 
     for(let i = 0; i < results.length; i++){
