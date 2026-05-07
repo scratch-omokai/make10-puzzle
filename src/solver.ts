@@ -30,9 +30,9 @@ export function solve_make(nums:number[], syms:boolean[], op:boolean[], make_num
       for(let sy_i = 0; sy_i < 4; sy_i++){
         if(!syms[sy_i]) continue;
         if(!(op[1] || a[1].length === 0)){
-          if(a[1].slice(-1)[0]![1] <= 2 && sy_i > 2){
+          if(a[1].slice(-1)[0]![1] <= 1 && sy_i > 1){
             continue;
-          }else if(a[1].slice(-1)[0]![0] > i && (!(a[1].slice(-1)[0]![1] > 2 && sy_i <= 2))){
+          }else if(a[1].slice(-1)[0]![0] > i && (!(a[1].slice(-1)[0]![1] > 1 && sy_i <= 1))){
             continue;
           }
         }
