@@ -32,7 +32,7 @@ export function solve_make(nums:number[], syms:boolean[], op:boolean[], make_num
         if(!(op[1] || a[1].length === 0)){
           if(a[1].slice(-1)[0]![1] <= 2 && sy_i > 2){
             continue;
-          }else if(a[1].slice(-1)[0]![0] > i && (!(a[1].slice(-1)[0]![1] <= 2 && sy_i > 2))){
+          }else if(a[1].slice(-1)[0]![0] > i && (!(a[1].slice(-1)[0]![1] > 2 && sy_i <= 2))){
             continue;
           }
         }
