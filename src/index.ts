@@ -1,15 +1,15 @@
-const sym = document.querySelectorAll('.symbol');
+const arithmetic_symbols_checkboxes = document.querySelectorAll<HTMLInputElement>('.symbol');
+// use querySelector instead of getElementById for better Typings
+const start_button = document.querySelector<HTMLButtonElement>('#start-make')!;
+const allow_pa = document.querySelector<HTMLInputElement>('#parentheses')!;
+const allow_so = document.querySelector<HTMLInputElement>('#sort')!;
 
-const start = document.getElementById('start-make')!as HTMLInputElement;
-const op_pa = document.getElementById('parentheses')!as HTMLInputElement;
-const op_so = document.getElementById('sort')!as HTMLInputElement;
+const make_num = document.querySelector<HTMLInputElement>('#make-num')!;
 
-const make_num = document.getElementById('make-num')!as HTMLInputElement;
+const add_num = document.querySelector<HTMLInputElement>('#add-num')!
+const remove_num = document.querySelector<HTMLInputElement>('#remove-num')!
 
-const add_num = document.getElementById('add-num')!as HTMLInputElement;
-const remove_num = document.getElementById('remove-num')!as HTMLInputElement;
-
-const ans_area = document.getElementById('answer')!;
+const ans_area = document.querySelector('#answer')!;
 
 import { solve_make } from './solver';
 
@@ -31,25 +31,23 @@ remove_num.addEventListener('click', () => {
   }
 });
 
-start.addEventListener('click', () => {
-  const input_num = document.querySelectorAll('.target-nums');
+start_button.addEventListener('click', () => {
+  const input_num = document.querySelectorAll<HTMLInputElement>('.target-nums');
   ans_area.innerHTML = "計算中...";
   setTimeout(() => {
-    const numbers: number[] = Array.from(input_num).map((input) => {
-      return Number((input as HTMLInputElement).value);
+    const seed_numbers: number[] = Array.from(input_num).map((input) => {
+      return Number(input.value);
     });
 
-    const syms: boolean[] = Array.from(sym).map((input) => {
-      return ((input as HTMLInputElement).checked);
-    });
+    const arithmetic_symbol_flags: boolean[] = Array.from(arithmetic_symbols_checkboxes).map(input => input.checked);
 
-    if(numbers.some(n => isNaN(n))) {
+    if(seed_numbers.some(Number.isNaN)) {
       alert("整数を正しく入力してください");
       ans_area.innerHTML = "";
       return;
     }
 
-    const results:string[] = Array.from(solve_make(numbers,syms,[false,op_pa.checked,op_so.checked],Number(make_num.value)));
+    const results:string[] = Array.from(solve_make(seed_numbers,arithmetic_symbol_flags,[false,allow_pa.checked,allow_so.checked],Number(make_num.value)));
     ans_area.innerHTML = "";
     if(results.length === 0){
       results.push("[見つかりませんでした]");
