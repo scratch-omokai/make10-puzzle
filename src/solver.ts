@@ -3,7 +3,7 @@ import { all_permutation } from "./perm";
 export function solve_make(
   seed_numbers: number[],
   arithmetic_symbol_flags: boolean[],
-  [_unused, allow_permutation, allow_sort]: [boolean, boolean, boolean],
+  [_unused, allow_parentheses, allow_sort]: [boolean, boolean, boolean],
   make_num: number,
 ): Set<string> {
   let q: [number[], [number, number][]][] = [];
@@ -34,7 +34,7 @@ export function solve_make(
     for (let i = 0; i < a[0].length - 1; i++) {
       for (let sy_i = 0; sy_i < 4; sy_i++) {
         if (!arithmetic_symbol_flags[sy_i]) continue;
-        if (!(allow_permutation || a[1].length === 0)) {
+        if (!(allow_parentheses || a[1].length === 0)) {
           if (a[1].slice(-1)[0]![1] <= 1 && sy_i > 1) {
             continue;
           } else if (a[1].slice(-1)[0]![0] > i && !(a[1].slice(-1)[0]![1] > 1 && sy_i <= 1)) {
@@ -72,7 +72,7 @@ export function solve_make(
       else if (j[1] === 3) tmp_ans[j[0]] = tmp_ans[j[0]] + "/" + tmp_ans[j[0] + 1];
 
       tmp_ans.splice(j[0] + 1, 1);
-      if (allow_permutation && tmp_ans.length !== 1) tmp_ans[j[0]] = "(" + tmp_ans[j[0]] + ")";
+      if (allow_parentheses && tmp_ans.length !== 1) tmp_ans[j[0]] = "(" + tmp_ans[j[0]] + ")";
     }
 
     ans.add(tmp_ans[0]!);
