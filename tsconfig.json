@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    /* 基本設定 */
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ESNext", "DOM"], // これを入れないとHTML操作でエラーになります
+    
+    /* 厳格なチェック（バグを防ぐ） */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    
+    /* Webpackとの相性設定 */
+    "sourceMap": true,        // デバッグしやすくなります
+    "esModuleInterop": true,
+    "skipLibCheck": true,     // ライブラリの細かいエラーを無視して高速化
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true   // Webpackのts-loaderを使う際に必要
+  },
+  "include": [
+    "src/**/*" // srcフォルダ内のすべてのtsファイルを対象にする
+  ]
+}

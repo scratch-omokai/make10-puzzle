@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>make10puzzle</title>
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <div class = "input-area">
+    <h3>整数を半角で入力してください</h3>
+    <input type="number" class="target-num" step="1" value="1">
+    <input type="number" class="target-num" step="1" value="2">
+    <input type="number" class="target-num" step="1" value="3">
+    <input type="number" class="target-num" step="1" value="4">
+
+    <div class="available">
+      <label>
+        <h3>使える記号を選択してください</h3>
+        <input type="checkbox" id="pl" class="symbol" checked> ＋
+      </label><label>
+        <input type="checkbox" id="mi" class="symbol" checked> －
+      </label><label>
+        <input type="checkbox" id="ti" class="symbol" checked> ×
+      </label><label>
+        <input type="checkbox" id="di" class="symbol" checked> ÷
+      </label>
+    </div>
+
+    <div class="options">
+      <label>
+        <input type="checkbox" id="strplus"> 文字列としての結合を許可(1と2で12等)
+      </label><label>
+        <input type="checkbox" id="parentheses" checked> 括弧の使用を許可
+      </label><label>
+        <input type="checkbox" id="sort" checked> 並び替えを許可
+      </label>
+      <br>
+      <h3>作りたい数字を入力</h3>
+      <input type="number" class="make-num" value="10">
+    </div>
+  </div>
+  <br>
+  <button id="start-make">数字を作る</button>
+  
+  <div id="answer"></div>
+  <script src="bundle.js"></script>
+</body>
+</html>
